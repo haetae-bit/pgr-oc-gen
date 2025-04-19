@@ -1,16 +1,27 @@
 ---
-
+import Layout from "../layouts/Layout.astro"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <h1>Punishing: Gray Raven Original Character Generator</h1>
+  <h2>... Or PGR OC Generator for short</h2>
+  <h3>AKA, PGROCG</h3>
+  
+  <button id="random">Randomize!</button>
+</Layout>
+
+<script>
+  import { randomFlip } from "@/functions";
+  import { Construct, Commandant } from "@/types";
+  
+  const button = document.getElementById("random");
+  button?.addEventListener("click", (_) => {
+    let character;
+    if (randomFlip()) {
+      character = new Commandant();
+    } else {
+      character = new Construct();
+    }
+    console.log(character);
+  });
+</script>
