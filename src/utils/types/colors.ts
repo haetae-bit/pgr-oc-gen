@@ -27,6 +27,7 @@ export const colors = z.enum([
   "brown",
 ]);
 
+// reference: https://www.tumblr.com/writingwithcolor/96830966357/words-for-skin-tone-how-to-describe-skin-color
 export const skinTones = z.enum([
   "dark brown",
   "brown",

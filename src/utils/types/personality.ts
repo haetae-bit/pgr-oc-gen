@@ -1,5 +1,6 @@
 import { z } from "astro/zod";
 
+// reference: https://ideonomy.mit.edu/essays/traits.html
 export const negative = z.enum([
   "Abrasive",
   "Abrupt",

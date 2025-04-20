@@ -6,22 +6,37 @@ import Layout from "../layouts/Layout.astro"
   <h1>Punishing: Gray Raven Original Character Generator</h1>
   <h2>... Or PGR OC Generator for short</h2>
   <h3>AKA, PGROCG</h3>
+
+  <article id="profile"></article>
   
   <button id="random">Randomize!</button>
 </Layout>
 
 <script>
-  import { randomFlip } from "@/functions";
-  import { Construct, Commandant } from "@/types";
+  import { generateCharacter } from "@/functions";
+  import type { Character } from "@/types";
   
   const button = document.getElementById("random");
+  const profile = document.getElementById("profile");
+
+  let character: Character;
   button?.addEventListener("click", (_) => {
-    let character;
-    if (randomFlip()) {
-      character = new Commandant();
-    } else {
-      character = new Construct();
-    }
+    character = {...generateCharacter()};
     console.log(character);
+
+    profile!.innerHTML = `
+      <table>
+        <tr>
+          <th scope="row">Type</th>
+          <td>${character.type}</td>
+        </tr>
+        <tr>
+          <th scope="row">Eye Color</th>
+          <td>${typeof character.eyeColor === "object"
+            ? `<div class="elements">${character.eyeColor.map(color => `<span class="color">${color}</span>`).join("")}</div>`
+            : character.eyeColor}</td>
+        </tr>
+      </table>
+    `;
   });
 </script>
