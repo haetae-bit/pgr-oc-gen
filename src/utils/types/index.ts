@@ -2,7 +2,7 @@ import { z } from "astro/zod";
 
 export const type = z.enum(["commandant", "construct"]);
 
-export type Personality = {
+type Personality = {
   positive: string[];
   negative: string[];
   neutral: string[];
