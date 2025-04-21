@@ -12,7 +12,7 @@ export const maintenance = z.enum([
 export const corruption = z.enum([
   "not infected",
   "infected",
-  "Transcendant",
-  "Ascendant",
-  "Agent",
+  "a Transcendant",
+  "an Ascendant",
+  "an Agent",
 ]);

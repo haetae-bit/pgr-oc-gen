@@ -1,0 +1,13 @@
+.chip {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  padding: 0.5em;
+}
+
+.color {
+  width: 1.5em;
+  height: 1.5em;
+}

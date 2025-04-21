@@ -2,19 +2,18 @@ import { z } from "astro/zod";
 
 export const type = z.enum(["commandant", "construct"]);
 
-type Personality = {
+export type Personality = {
   positive: string[];
   negative: string[];
   neutral: string[];
 };
 
-type Affiliation = {
+export type Affiliation = {
   faction: string;
   group?: string | undefined;
 };
 
 export type Character = {
-  [key: string]: any;
   type: string;
   eyeColor: string | string[];
   skinColor: string;

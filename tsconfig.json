@@ -8,6 +8,8 @@
       "$/*": ["src/assets/*"],
       "~/*": ["src/components/*"],
       "@/*": ["src/utils/*"]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

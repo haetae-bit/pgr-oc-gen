@@ -9,18 +9,18 @@ import { negative, neutral, positive } from "./types/personality";
 import { bodyType, height } from "./types/physical";
 import weapons from "./types/weapons";
 
-function getRandom(data: string[]) {
-  let array = [...data];
-  let index = Math.floor(Math.random() * array.length);
-  const random = array[index];
-  array.splice(index, 1);
+function getRandom(data: string[], array = false) {
+  let index = Math.floor(Math.random() * data.length);
+  const random = data[index];
+  (array) ? data.splice(index, 1) : data.toSpliced(index, 1);
   return random;
 }
 
 function getRandomItems(data: string[], amount: number) {
+  let array = [...data];
   let result = [];
-  for (let i = 0; i < amount; i++) result.push(getRandom(data));
-  return result;
+  for (let i = 0; i < amount; i++) result.push(getRandom(array, true));
+  return [...new Set(result)];
 }
 
 function randomFlip(): boolean {
@@ -41,14 +41,14 @@ function generateFaction() {
 
 function generateConstruct(type: z.infer<typeof characterType>) {
   if (type === "construct") {
-    let battleClass = getRandom(classes.options);
-    let element = getRandom(elements.options);
-    let frameType = randomFlip() ? frameTypes.enum.omniframe : frameTypes.enum.uniframe;
-    let physicalMaintenance = getRandom(maintenance.options);
-    let corruptionLevel = getRandom(corruption.options);
+    const battleClass = getRandom(classes.options);
+    const element = getRandom(elements.options);
+    const frameType = randomFlip() ? frameTypes.enum.omniframe : frameTypes.enum.uniframe;
+    const physicalMaintenance = getRandom(maintenance.options);
+    const corruptionLevel = getRandom(corruption.options);
 
     return {
-      battleClass,
+      class: battleClass,
       element,
       frameType,
       maintenance: physicalMaintenance,
@@ -58,19 +58,19 @@ function generateConstruct(type: z.infer<typeof characterType>) {
 }
 
 export function generateCharacter(): Character {
-  let generatedType = randomFlip() ? characterType.enum.commandant : characterType.enum.construct;
-  let eyeColor = randomFlip() ? getRandom(colors.options) : getRandomItems(colors.options, 2);
-  let skinColor = getRandom(skinTones.options);
-  let hairColor = getRandom(colors.options);
-  let clothingColors = getRandomItems(colors.options, 3);
-  let generatedHeight = getRandom(height.options);
-  let generatedBodyType = getRandom(bodyType.options);
-  let personality = {
+  const generatedType = randomFlip() ? characterType.enum.commandant : characterType.enum.construct;
+  const eyeColor = randomFlip() ? getRandom(colors.options) : getRandomItems(colors.options, 2);
+  const skinColor = getRandom(skinTones.options);
+  const hairColor = getRandom(colors.options);
+  const clothingColors = getRandomItems(colors.options, 3);
+  const generatedHeight = getRandom(height.options);
+  const generatedBodyType = getRandom(bodyType.options);
+  const personality = {
     positive: getRandomItems(positive.options, 3),
     negative: getRandomItems(negative.options, 3),
     neutral: getRandomItems(neutral.options, 3),
   };
-  let weapon = getRandom(weapons.options);
+  const weapon = getRandom(weapons.options);
 
   return {
     type: generatedType,

@@ -1,5 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import Profile from "~/Profile";
 ---
 
 <Layout>
@@ -11,78 +12,6 @@ import Layout from "../layouts/Layout.astro"
     <h1>Disclaimer</h1>
     <p>This generator doesn't strictly follow canon, but feel free to edit and adapt the results for your own use!</p>
   </div>
-
-  <article id="profile" x-data="profile">
-  </article>
-  
-  <button id="random">Randomize!</button>
+ 
+  <Profile client:load />
 </Layout>
-
-<script>
-  import { generateCharacter } from "@/functions";
-  import type { Character } from "@/types";
-  
-  const button = document.getElementById("random");
-  const profile = document.getElementById("profile");
-
-  let character: Character;
-  button?.addEventListener("click", (_) => {
-    character = generateCharacter();
-
-    profile!.innerHTML = "";
-
-    const table = document.createElement("table");
-    for (const key in character) {
-      if (Object.prototype.hasOwnProperty.call(character, key)) {
-        let element = character[key];
-        const th = key.replace(/[A-Z]/, " $&");
-        table.innerHTML += `<tr>
-          <th scope="row">${th}</th>
-          <td>
-            ${key === "personality"
-            ? `<table>
-                <thead>
-                  <th scope="col">Positive</th>
-                  <th scope="col">Neutral</th>
-                  <th scope="col">Negative</th>
-                </thead>
-                <tr>
-                  <td>${element.positive[0]}</td>
-                  <td>${element.neutral[0]}</td>
-                  <td>${element.negative[0]}</td>
-                </tr>
-                <tr>
-                  <td>${element.positive[1]}</td>
-                  <td>${element.neutral[1]}</td>
-                  <td>${element.negative[1]}</td>
-                </tr>
-                <tr>
-                  <td>${element.positive[2]}</td>
-                  <td>${element.neutral[2]}</td>
-                  <td>${element.negative[2]}</td>
-                </tr>
-              </table>`
-            : key === "affiliation"
-              ? element.group
-                ? `<table>
-                    <tr>
-                      <th scope="col">Faction</th>
-                      <th scope="col">Company</th>
-                    </tr>
-                    <tr>
-                      <td>${element.faction}</td>
-                      <td>${element.group}</td>
-                    </tr>
-                  </table>`
-                : element.faction
-            : typeof element === "object"
-              ? element.map((item: string) => `<span class="item">${item}</span>`).join("")
-            : element}
-          </td>
-        </tr>`;
-      }
-    }
-
-    profile?.insertAdjacentElement("afterbegin", table);
-  });
-</script>
