@@ -7,7 +7,13 @@ import Layout from "../layouts/Layout.astro"
   <h2>... Or PGR OC Generator for short</h2>
   <h3>AKA, PGROCG</h3>
 
-  <article id="profile"></article>
+  <div role="note">
+    <h1>Disclaimer</h1>
+    <p>This generator doesn't strictly follow canon, but feel free to edit and adapt the results for your own use!</p>
+  </div>
+
+  <article id="profile" x-data="profile">
+  </article>
   
   <button id="random">Randomize!</button>
 </Layout>
@@ -21,22 +27,62 @@ import Layout from "../layouts/Layout.astro"
 
   let character: Character;
   button?.addEventListener("click", (_) => {
-    character = {...generateCharacter()};
-    console.log(character);
+    character = generateCharacter();
 
-    profile!.innerHTML = `
-      <table>
-        <tr>
-          <th scope="row">Type</th>
-          <td>${character.type}</td>
-        </tr>
-        <tr>
-          <th scope="row">Eye Color</th>
-          <td>${typeof character.eyeColor === "object"
-            ? `<div class="elements">${character.eyeColor.map(color => `<span class="color">${color}</span>`).join("")}</div>`
-            : character.eyeColor}</td>
-        </tr>
-      </table>
-    `;
+    profile!.innerHTML = "";
+
+    const table = document.createElement("table");
+    for (const key in character) {
+      if (Object.prototype.hasOwnProperty.call(character, key)) {
+        let element = character[key];
+        const th = key.replace(/[A-Z]/, " $&");
+        table.innerHTML += `<tr>
+          <th scope="row">${th}</th>
+          <td>
+            ${key === "personality"
+            ? `<table>
+                <thead>
+                  <th scope="col">Positive</th>
+                  <th scope="col">Neutral</th>
+                  <th scope="col">Negative</th>
+                </thead>
+                <tr>
+                  <td>${element.positive[0]}</td>
+                  <td>${element.neutral[0]}</td>
+                  <td>${element.negative[0]}</td>
+                </tr>
+                <tr>
+                  <td>${element.positive[1]}</td>
+                  <td>${element.neutral[1]}</td>
+                  <td>${element.negative[1]}</td>
+                </tr>
+                <tr>
+                  <td>${element.positive[2]}</td>
+                  <td>${element.neutral[2]}</td>
+                  <td>${element.negative[2]}</td>
+                </tr>
+              </table>`
+            : key === "affiliation"
+              ? element.group
+                ? `<table>
+                    <tr>
+                      <th scope="col">Faction</th>
+                      <th scope="col">Company</th>
+                    </tr>
+                    <tr>
+                      <td>${element.faction}</td>
+                      <td>${element.group}</td>
+                    </tr>
+                  </table>`
+                : element.faction
+            : typeof element === "object"
+              ? element.map((item: string) => `<span class="item">${item}</span>`).join("")
+            : element}
+          </td>
+        </tr>`;
+      }
+    }
+
+    profile?.insertAdjacentElement("afterbegin", table);
   });
 </script>
