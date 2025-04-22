@@ -9,7 +9,7 @@ import { negative, neutral, positive } from "./types/personality";
 import { bodyType, height } from "./types/physical";
 import weapons from "./types/weapons";
 
-function getRandom(data: string[], array = false) {
+export function getRandom(data: string[], array = false) {
   let index = Math.floor(Math.random() * data.length);
   const random = data[index];
   (array) ? data.splice(index, 1) : data.toSpliced(index, 1);

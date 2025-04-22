@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title }: Props = Astro.props;
+---
+
+<div role="note">
+  <h1><div class="diamond"></div> {title}</h1>
+  <div class="content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  [role="note"] {
+    max-width: 65ch;
+    margin: 1em auto;
+    background-color: var(--white);
+
+    h1 {
+      display: grid;
+      grid-template-columns: 1em 1fr;
+      place-content: center;
+      gap: 0.25em;
+      font-size: 1.25em;
+      background-color: var(--light-blue);
+      padding: 0.25em 0.5em;
+
+      .diamond {
+        position: relative;
+        top: 50%;
+        left: -0.15em;
+        display: inline-block;
+        translate: 50% -50%;
+      }
+    }
+
+    .content {
+      padding: 0.5em;
+    }
+  }
+</style>

@@ -6,7 +6,7 @@ type Props = {
 
 export default function PersonalityTable({ data }: Props) {
   return (
-    <table>
+    <table class="personality">
       <thead>
         <tr>
           <th scope="col">Positive</th>

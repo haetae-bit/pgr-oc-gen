@@ -1,17 +1,48 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Profile from "~/Profile";
+import Note from "~/Note.astro";
 ---
 
 <Layout>
-  <h1>Punishing: Gray Raven Original Character Generator</h1>
-  <h2>... Or PGR OC Generator for short</h2>
-  <h3>AKA, PGROCG</h3>
+  <main>
+    <hgroup>
+      <h1>Punishing: Gray Raven Original Character Generator</h1>
+      <h2>... Or PGR OC Generator for short</h2>
+      <h3>AKA, PGROCG</h3>
+    </hgroup>
 
-  <div role="note">
-    <h1>Disclaimer</h1>
-    <p>This generator doesn't strictly follow canon, but feel free to edit and adapt the results for your own use!</p>
-  </div>
- 
-  <Profile client:load />
+    <Note title="Disclaimer">
+      <p>This generator doesn't strictly follow canon, but feel free to edit and adapt the results for your own use!</p>
+    </Note>
+  
+    <Profile client:load>
+      <Note title="Need a name?">
+        <p>Generate one <a href="https://www.behindthename.com/random/" target="_blank" rel="noopener noreferrer">here</a></p>
+        <p>For constructs figuring out frame names, <a href="https://phrontistery.info/index.html" target="_blank" rel="noopener noreferrer">try a random word from this obscure dictionary.</a></p>
+      </Note>
+    </Profile>
+  </main>
 </Layout>
+
+<style>
+  main {
+    max-width: 80ch;
+    margin: 0 auto;
+
+    @media screen and (width < 80ch) {
+      max-width: 100%;
+      margin: 0 1em;
+    }
+  }
+
+  hgroup {
+    display: grid;
+    gap: 0.5em;
+    text-align: center;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+</style>

@@ -1,0 +1,108 @@
+@import "./reset.css";
+@import "./fonts.css";
+
+:root {
+  --font: "Roboto Condensed", Roboto, system-ui, sans-serif;
+  --black: #000100;
+  --white: #fefefe;
+  --light-blue: #a7bdd9;
+  --blue: #0e71bd;
+}
+
+body {
+  font: normal 1.15em var(--font);
+  color: var(--black);
+  background: var(--white);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--light-blue) 60%, var(--white)), var(--white) 50%) fixed no-repeat top center / cover;
+}
+
+.diamond {
+  transform: rotate(45deg);
+  height: 0.5em;
+  aspect-ratio: 1;
+  background-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+#profile {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1.5em;
+  margin-bottom: 4em;
+
+  .row {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 0.25em;
+  }
+
+  section {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    justify-content: center;
+
+    &.colors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    &.battle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: stretch;
+
+      .col {
+        background-color: color(from var(--black) srgb r g b / 0.7);
+        gap: 0;
+
+        h3 {
+          background-color: var(--black);
+          color: var(--white);
+          padding: 0.25em 0.5em;
+          text-align: center;
+          width: 100%;
+        }
+
+        .col-content {
+          padding: 0.5em;
+        }
+      }
+    }
+  }
+
+  .col {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .personality {
+    text-align: center;
+    
+    thead {
+      background-color: var(--black);
+      color: var(--white);
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 0.25em 0.5em;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--black) 75%, var(--light-blue));
+  }
+}

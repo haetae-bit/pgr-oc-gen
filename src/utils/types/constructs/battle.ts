@@ -6,7 +6,7 @@ export const classes = z.enum([
   "attacker",
   "annihilator",
   "amplifier",
-  "observer",
+  // "observer", // unreleased class
   "vanguard",
 ]);
 

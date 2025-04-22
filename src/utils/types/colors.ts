@@ -25,6 +25,9 @@ export const colors = z.enum([
   "black",
   "obsidian",
   "brown",
+  "teal",
+  "turquoise",
+  "ice blue",
 ]);
 
 // reference: https://www.tumblr.com/writingwithcolor/96830966357/words-for-skin-tone-how-to-describe-skin-color
@@ -53,5 +56,7 @@ export const skinTones = z.enum([
   "walnut",
   "ash",
   "sienna",
-  "clay"
+  "clay",
+  "umber",
+  "taupe",
 ]);

@@ -1,0 +1,5 @@
+.icon {
+  max-width: 128px;
+  height: 128px;
+  filter: drop-shadow(2px 2px 3px color(from var(--black) srgb r g b / 0.5));
+}
