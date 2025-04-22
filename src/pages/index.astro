@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Profile from "~/Profile";
 import Note from "~/Note.astro";
+import { generateCharacter } from "@/functions";
+
+
 ---
 
 <Layout>
@@ -22,6 +25,13 @@ import Note from "~/Note.astro";
         <p>For constructs figuring out frame names, <a href="https://phrontistery.info/index.html" target="_blank" rel="noopener noreferrer">try a random word from this obscure dictionary.</a></p>
       </Note>
     </Profile>
+    <noscript>
+      <Note title="Why am I seeing this?">
+        <p>It looks like you might have JavaScript turned off.</p>
+        <p>This website uses JavaScript to randomly generate a character for you.</p>
+        <p><a href="https://www.wikihow.com/Enable-JavaScript" target="_blank" rel="noopener noreferrer">Turn on JavaScript</a> or check to see if there are any browser extensions that might be problematic.</p>
+      </Note>
+    </noscript>
   </main>
 </Layout>
 

@@ -18,6 +18,7 @@ const { title }: Props = Astro.props;
     max-width: 65ch;
     margin: 1em auto;
     background-color: var(--white);
+    box-shadow: 2px 2px 3px 0 color(from var(--black) srgb r g b / 0.5);
 
     h1 {
       display: grid;
@@ -39,6 +40,13 @@ const { title }: Props = Astro.props;
 
     .content {
       padding: 0.5em;
+      
+      p {
+        margin: 0.5em 0;
+
+        &:first-child { margin-top: 0; }
+        &:last-child { margin-bottom: 0;}
+      }
     }
   }
 </style>
