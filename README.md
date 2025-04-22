@@ -5,12 +5,21 @@
 This is a silly one-off project meant to help and inspire fans create their own commandant for the cross-platform, action role-playing game called [Punishing: Gray Raven](https://pgr.kurogame.net/) by KuroGame.
 
 TODO:
-- [ ] Get a list of traits
-- [ ] Look up how generators work
-- [ ] Have some nice styles
+- [x] Get a list of traits
+- [x] Look up how generators work
+- [x] Have some nice styles
 - [ ] Deploy
 
 Nice to haves:
-- [ ] Have an option to create Constructs
+- [x] Have an option to create Constructs
 - [ ] Frame ideas or motifs
 - [ ] Name/title generator?
+
+# Disclaimer
+I do not own any of the image assets included in this project, they belong to KURO GAMES.
+
+Also wanted to link to other websites that helped make this project possible, including but not limited to:
+
+- [Writing with Color](https://www.tumblr.com/writingwithcolor/96830966357/words-for-skin-tone-how-to-describe-skin-color)
+- [Ideonomy](https://ideonomy.mit.edu/essays/traits.html)
+- [GRAY RAVENS](https://grayravens.com/wiki/GRAY_RAVENS)
