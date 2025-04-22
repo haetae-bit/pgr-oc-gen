@@ -2,9 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Profile from "~/Profile";
 import Note from "~/Note.astro";
-import { generateCharacter } from "@/functions";
-
-
 ---
 
 <Layout>
@@ -14,6 +11,11 @@ import { generateCharacter } from "@/functions";
       <h2>... Or PGR OC Generator for short</h2>
       <h3>AKA, PGROCG</h3>
     </hgroup>
+
+    <blockquote>
+      <p>This is a character generator for creating original characters in the post-apocalyptic, science fiction setting of Punishing: Gray Raven.</p>
+      <p>Punishing: Gray Raven (or PGR for short) is a free-to-play action role-playing game with gacha mechanics by KURO GAMES, available on mobile and PC.</p>
+    </blockquote>
 
     <Note title="Disclaimer">
       <p>This generator doesn't strictly follow canon, but feel free to edit and adapt the results for your own use!</p>
@@ -54,5 +56,14 @@ import { generateCharacter } from "@/functions";
 
   h1, h2, h3 {
     text-wrap: balance;
+  }
+
+  blockquote {
+    display: grid;
+    row-gap: 0.5em;
+    background-color: color(from var(--black) srgb r g b / 0.8);
+    color: var(--white);
+    padding: 0.75em 1em;
+    margin: 1em 0;
   }
 </style>

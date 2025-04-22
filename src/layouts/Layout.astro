@@ -15,7 +15,20 @@ const { title = "PGR OC Generator" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
+	<header>
+		<a id="source-code" href="https://github.com/haetae-bit/pgr-oc-gen" target="_blank" rel="noopener noreferrer">Source code</a>
+	</header>
 	<body>
 		<slot />
 	</body>
 </html>
+
+<style>
+	#source-code {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		font-weight: bold;
+		letter-spacing: 0.025em;
+	}
+</style>
